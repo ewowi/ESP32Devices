@@ -3,29 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ESP32 Devices</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        #messages { margin-top: 20px; }
-    </style>
+    <title>ESP32 Devices by MoonModules</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1><a href="https://github.com/ewowi/ESP32Devices/">ESP32 Devices</a></h1>
-    <i>Powered by <a href="https://MoonModules.org">MoonModules</a></i>
-    <div id="messages"></div>
+    <div class="container">
+        <header>
+            <h1>🔌 ESP32 Devices by MoonModules</h1>
+            <div class="status">
+                <span class="status-indicator" id="listening-indicator"></span>
+                <span>Listening on UDP Port 65506</span>
+            </div>
+        </header>
 
-    <script>
-        const socket = new WebSocket('ws://localhost:8192');
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="device-count">0</div>
+                <div class="stat-label">Active Devices</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="last-update">Never</div>
+                <div class="stat-label">Last Update</div>
+            </div>
+        </div>
 
-        socket.onmessage = (event) => {
-            const msgDiv = document.createElement('div');
-            msgDiv.innerHTML = event.data;
-            document.getElementById('messages').appendChild(msgDiv);
-        };
+        <div class="devices-container" id="devices-container">
+            <div class="no-devices" id="no-devices">
+                <div class="no-devices-icon">📡</div>
+                <h2>No devices found</h2>
+                <p>Make sure your ESP32 devices are broadcasting UDP packets to port 65506</p>
+                <div class="example-json">
+                    <strong>Expected JSON format:</strong>
+                    <pre>{"id": "ESP32_01", "name": "Device Name", ...}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        socket.onerror = (error) => {
-            console.error('WebSocket error:', error);
-        };
-    </script>
+    <script src="renderer.js"></script>
 </body>
 </html>

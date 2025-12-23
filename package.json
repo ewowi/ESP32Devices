@@ -1,28 +1,24 @@
 {
   "name": "esp32devices",
   "version": "1.0.0",
-  "description": "ESP32 Device Monitor",
-  "main": "ESP32Devices.js",
+  "description": "ESP32 Devices",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder"
   },
   "author": "ewowi",
-  "license": "GPL-v3",
+  "license": "GPL-v3-or-later",
   "devDependencies": {
-    "electron": "^28.0.0",
-    "electron-builder": "^24.9.1"
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12"
   },
   "build": {
     "appId": "com.esp32devices.app",
-    "productName": "ESP32 Device Monitor",
+    "productName": "ESP32Devices",
     "directories": {
       "output": "dist"
     },
-    "files": [
-      "**/*",
-      "!node_modules/**/*"
-    ],
     "win": {
       "target": [
         "nsis"
