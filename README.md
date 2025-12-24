@@ -6,18 +6,112 @@ NodeJS tool to find ESP32 devices on the network listening to UDP. Supports [WLE
 
 ESP32Devices is a [MoonModules](http://MoonModules.org) product, ⚖️GPL-v3
 
-# InstallRun
+# ESP32 Devices - Electron App
 
-* Clone this repo to folder xyz (choose your place)
-* ```cd xyz```
-* install nodeJS if not installed already
-* ```npm init -y``` to create package.json
-* ```npm install ws``` to enable websockets
+## Project Structure
+```
+esp32-monitor/
+├── package.json
+├── main.js
+├── preload.js
+├── renderer.js
+├── index.html
+├── web.html
+├── web-renderer.js
+└── styles.css
+```
 
-# Run
+## Installation Steps
 
-* ```node ESP32Devices.js``` to start a webserver listening to udp 65506 and hosting html on 8192. 65506 is used by WLED and Moon. 8192 can be changed if you prefer another port.
-* ```index.html``` to start the webpage showing the devices. Click on the IP number to go to the Device itself
+1. **Install Node.js** (if not already installed)
+   - Download from https://nodejs.org/ (LTS version recommended)
+
+2. **Create project folder**
+   ```bash
+   mkdir esp32-monitor
+   cd esp32-monitor
+   ```
+
+3. **Initialize npm and install dependencies**
+   ```bash
+   npm init -y
+   npm install electron express ws --save-dev
+   ```
+
+4. **Create the files** (see artifacts below for file contents)
+
+5. **Run the app**
+   ```bash
+   npm start
+   ```
+
+## 📱 Mobile Access 🚧
+
+When the app is running:
+1. Click the "📱 Mobile Access" button in the desktop app
+2. Scan the QR code with your phone, OR
+3. Type one of the displayed URLs in your mobile browser
+4. Your phone must be on the same WiFi network
+
+Example mobile URL: `http://192.168.1.100:8080`
+
+The web interface will automatically reconnect if disconnected and works great on phones/tablets!
+
+6. **Build installers** (optional, for distribution)
+   ```bash
+   npm install electron-builder --save-dev
+   npm run build
+   ```
+
+## ESP32 Configuration
+
+🚧: update for MoonLight protocol (byte array)
+
+Your ESP32 devices should broadcast UDP packets to port **12345** with JSON format:
+
+```cpp
+#include <WiFi.h>
+#include <WiFiUdp.h>
+
+WiFiUDP udp;
+const char* udpAddress = "255.255.255.255";
+const int udpPort = 12345;
+
+void setup() {
+  WiFi.begin("YOUR_SSID", "YOUR_PASSWORD");
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+  }
+  udp.begin(udpPort);
+}
+
+void loop() {
+  // Create JSON packet
+  String json = "{\"id\":\"ESP32_01\",\"name\":\"Living Room Sensor\",";
+  json += "\"temperature\":23.5,\"humidity\":65,\"status\":\"ok\"}";
+  
+  // Broadcast
+  udp.beginPacket(udpAddress, udpPort);
+  udp.print(json);
+  udp.endPacket();
+  
+  delay(5000); // Send every 5 seconds
+}
+```
+
+## Expected JSON Format
+
+```json
+{
+  "id": "ESP32_01",
+  "name": "Device Name",
+  "temperature": 23.5,
+  "humidity": 65,
+  "status": "ok"
+}
+```
+
+You can add any fields you want - the app will display them all.
 
 # Remarks
 
