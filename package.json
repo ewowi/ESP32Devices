@@ -1,16 +1,53 @@
 {
-  "name": "esp32_udp",
+  "name": "esp32devices",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "ESP32 Devices",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "ewowi",
+  "license": "GPL-v3-or-later",
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.esp32devices.app",
+    "productName": "ESP32Devices",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "icon.icns"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "icon.png"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ewowi/ESP32Devices.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/ewowi/ESP32Devices/issues"
+  },
+  "homepage": "https://github.com/ewowi/ESP32Devices#readme",
   "dependencies": {
-    "ws": "^8.18.1"
+    "ws": "^8.18.3"
   }
 }
