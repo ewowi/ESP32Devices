@@ -28,8 +28,8 @@ esp32-monitor/
 
 2. **Create project folder**
    ```bash
-   mkdir esp32-monitor
-   cd esp32-monitor
+   mkdir esp32Devices
+   cd esp32Devices
    ```
 
 3. **Initialize npm and install dependencies**
@@ -38,14 +38,22 @@ esp32-monitor/
    npm install electron express ws --save-dev
    ```
 
-4. **Create the files** (see artifacts below for file contents)
-
-5. **Run the app**
+4. **Create the app**
    ```bash
-   npm start
+   rm -rf node_modules dist ; optionally to clean up
+   npm install ; maybe not needed ...
+   npm run build
    ```
 
-## 📱 Mobile Access 🚧
+   a distrubution should be created in the esp32Devices/dist folder
+
+6. **Run the app**
+
+   Check the esp32Devices/dist folder for the created executable and click on it
+
+## 📱 Mobile Access 
+
+Not implemented yet ! 🚧
 
 When the app is running:
 1. Click the "📱 Mobile Access" button in the desktop app
