@@ -130,7 +130,7 @@ You can add any fields you want - the app will display them all.
 * This tool can easily be extended with a little knowledge of HTML / JS
     * More WLED UPD data can be extracted according to the [instance package definition](https://github.com/MoonModules/StarLight/blob/cc909d1663f3d775e0bc1ed0a4b5678889a34814/src/Sys/SysModInstances.h#L55-L66) and [sync package definition](https://github.com/MoonModules/StarLight/blob/cc909d1663f3d775e0bc1ed0a4b5678889a34814/src/Sys/SysModInstances.h#L76-L99) (UDP on port 21324)
     * More info can be extracted using the JSON get api of wled (e.g. <ip>/cfg etc). Commands can be send to WLED devices using JSON post
-    * This is developed in parallel with [moonlight/devices](https://moonmodules.org/MoonLight/moonbase/module/devices/) as this module will ask devices: what do you want me to control for you.
+    * This is developed in parallel with [moonlight/devices](https://moonmodules.org/MoonLight/moonbase/devices/) as this module will ask devices: what do you want me to control for you.
 
   <img width="393" height="575" src="https://github.com/user-attachments/assets/b1de393a-d887-4b1d-b237-65f250ead279" />
 
