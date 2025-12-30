@@ -1,8 +1,8 @@
 # ESP32Devices
 
-NodeJS tool to find ESP32 devices on the network listening to UDP. Supports [WLED](https://github.com/wled/WLED), [WLED-MM](https://github.com/MoonModules/WLED-MM), [MoonBase](https://github.com/ewowi/MoonBase) and [MoonLight](https://github.com/MoonModules/MoonLight)
+Electron App running on MacOS and Windows using NodeJS to find ESP32 devices on the network listening to UDP. Supports [WLED](https://github.com/wled/WLED), [WLED-MM](https://github.com/MoonModules/WLED-MM), [MoonBase](https://github.com/ewowi/MoonBase) and [MoonLight](https://github.com/MoonModules/MoonLight)
 
-<img width="908" alt="Screenshot 2025-04-15 at 22 34 17" src="https://github.com/user-attachments/assets/a8cdf33e-2e83-4662-a0e3-778dded1fcd7" />
+<img width="600" src="https://github.com/user-attachments/assets/118324d8-45a6-4a88-b68b-48be3b9709f3" />
 
 ESP32Devices is a [MoonModules](http://MoonModules.org) product, ⚖️GPL-v3
 
@@ -25,31 +25,34 @@ esp32-monitor/
 
 1. **Install Node.js** (if not already installed)
    - Download from https://nodejs.org/ (LTS version recommended)
+   - Windows: install npm first
 
 2. **Create project folder**
    ```bash
-   mkdir esp32Devices
+   mkdir /GitHub/ewowi/esp32Devices
    cd esp32Devices
    ```
 
 3. **Initialize npm and install dependencies**
    ```bash
-   npm init -y
+   ; npm init -y
    npm install electron express ws --save-dev
    ```
 
 4. **Create the app**
    ```bash
-   rm -rf node_modules dist ; optionally to clean up
-   npm install ; maybe not needed ...
+   ; rm -rf node_modules dist ; optionally to clean up
+   ; npm install ; not needed ...
    npm run build
    ```
 
-   a distrubution should be created in the esp32Devices/dist folder
+   a distrubutions are created in the esp32Devices/dist folder
 
 6. **Run the app**
 
-   Check the esp32Devices/dist folder for the created executable and click on it
+   Check the esp32Devices/dist folder for the created executable / installer and click on it
+
+   Check [Releases](https://github.com/ewowi/ESP32Devices/releases) for latest distributions
 
 ## 📱 Mobile Access 
 
@@ -129,7 +132,6 @@ You can add any fields you want - the app will display them all.
     * More info can be extracted using the JSON get api of wled (e.g. <ip>/cfg etc). Commands can be send to WLED devices using JSON post
     * This is developed in parallel with [moonlight/devices](https://moonmodules.org/MoonLight/moonbase/module/devices/) as this module will ask devices: what do you want me to control for you.
 
-  <img width="696" alt="image" src="https://github.com/user-attachments/assets/50b4cb41-1deb-482a-89d1-3e787b9276b9" />
-
+  <img width="393" height="575" src="https://github.com/user-attachments/assets/b1de393a-d887-4b1d-b237-65f250ead279" />
 
 * Might also implement [Bluetooth support](https://github.com/MoonModules/MoonLight/issues/26)
